@@ -15,8 +15,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "MagicPod E2Eテスト"
-          command: "bash run_magicpod_test.sh"
+          name: MagicPod E2Eテスト 
+          command: bash run_magicpod_test.sh
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
