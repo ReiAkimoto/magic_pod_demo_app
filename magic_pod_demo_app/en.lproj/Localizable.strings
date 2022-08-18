@@ -10,7 +10,7 @@
 "nameFieldLabel" = "    Name   ";
 "sexFieldLabel" = "    Gender  ";
 "registerBackButtonTitle" = "Back";
-"registerButtonTitle" = "Register";
+"registerButtonTitle" = "OK";
 "registeringLabel" = "Registering...";
 "didRegisterLabel" = "Registered!";
 "pleaseInputLabel" = "Please Input";
