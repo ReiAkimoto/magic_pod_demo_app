@@ -9,16 +9,14 @@ jobs:
     name: Run batch test
     # jobのステップ
     steps:
-      - uses: actions/checkout@v3 # actionsのバージョン。最新をセットしてください
-      - uses: ReiAkimoto/magic_pod_demo_app@master
+      - name: Checkout
+        uses: actions/checkout@v3 # actionsのバージョン。最新をセットしてください
       - name: set up ruby # Rubyをインストール
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1.2
-
       - name: bundle install # Gem系ライブラリインストール
         run: bundle install
-
       - name: setup brew # brewをインストール
         run: echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> $GITHUB_PATH
      # ステップ1(アプリを作成する)
