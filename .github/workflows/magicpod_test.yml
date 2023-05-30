@@ -9,7 +9,7 @@ jobs:
     name: Run batch test
     # jobのステップ
     steps:
-        uses: ReiAkimoto/magic_pod_demo_app@master
+      - uses: ReiAkimoto/magic_pod_demo_app@master
       - name: set up ruby # Rubyをインストール
         uses: ruby/setup-ruby@v1
         with:
