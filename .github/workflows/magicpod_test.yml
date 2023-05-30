@@ -1,0 +1,22 @@
+# Git Pushした時にこのワークフローを実行する
+on: [push]
+
+jobs:
+  # job名(任意の名前)
+  magic_pod_job:
+    # virtual machineの形式を指定 
+    runs-on: ubuntu-latest
+    name: Run batch test
+    # jobのステップ
+    steps:
+     # ステップ1(アプリを作成する)
+        # ステップ名1
+      - name: Create app
+        run: bundle exec fastlane magicpod_create_app #Fastfileで指定したレーン名
+     # ステップ2(作成したアプリをMagicPodにアップロードし一括実行する)
+        # ステップ名2
+      - name: Batch run test
+        env:
+          MAGICPOD_API_TOKEN: ${{ secrets.MAGIC_POD_API_TOKEN }} #GitHubで設定した変数名
+        run: bash run_magicpod_test.sh
+
