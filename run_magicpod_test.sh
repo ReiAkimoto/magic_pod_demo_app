@@ -11,6 +11,9 @@ FILENAME=magicpod-api-client # 任意のファイル名
 
 curl -L "https://app.magicpod.com/api/v1.0/magicpod-clients/api/${OS}/latest/" -H "Authorization: Token ${APIKEY}" --output ${FILENAME}.zip
 
+pwd
+ls -la
+
 unzip -fq ${FILENAME}.zip
 
 
