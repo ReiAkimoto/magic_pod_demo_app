@@ -17,6 +17,8 @@ jobs:
           ruby-version: 3.1.2
       - name: bundle install # Gem系ライブラリインストール
         run: bundle install
+      - name: bundle update 
+        run: bundle update
       - name: setup brew # brewをインストール
         run: echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> $GITHUB_PATH
      # ステップ1(アプリを作成する)
