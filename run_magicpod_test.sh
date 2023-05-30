@@ -29,7 +29,7 @@ export MAGICPOD_PROJECT=DemoApp
 
 # 先ほど作成したappファイルをMagicPodにアップロードして、FILE_NOを取得
 
-APP_PATH=/Users/rei/magicpod_created_app/Build/Products/Debug-iphonesimulator/magic_pod_demo_app.app
+APP_PATH=magicpod_created_app/Build/Products/Debug-iphonesimulator/magic_pod_demo_app.app
 FILE_NO=$(./magicpod-api-client upload-app -a ${APP_PATH})
 
 
