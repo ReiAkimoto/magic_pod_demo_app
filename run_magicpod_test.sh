@@ -14,7 +14,7 @@ curl -L "https://app.magicpod.com/api/v1.0/magicpod-clients/api/${OS}/latest/" -
 pwd
 ls -la
 
-unzip -fq ${FILENAME}.zip
+unzip -q ${FILENAME}.zip
 
 
 
