@@ -13,6 +13,7 @@ jobs:
         # ステップ名1
       - name: Create app
         uses: ReiAkimoto/magic_pod_demo_app@master
+      - name: Test
         run: bundle exec fastlane magicpod_create_app #Fastfileで指定したレーン名
      # ステップ2(作成したアプリをMagicPodにアップロードし一括実行する)
         # ステップ名2
