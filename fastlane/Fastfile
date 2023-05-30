@@ -18,7 +18,7 @@ default_platform(:ios)
 platform :ios do
   desc "Description of what the lane does"
   lane :magicpod_create_app do
-    app_dir_path = "/Users/rei/magicpod_created_app"
+    app_dir_path = "magicpod_created_app"
 
     build_ios_app(
         scheme: "magic_pod_demo_app",
