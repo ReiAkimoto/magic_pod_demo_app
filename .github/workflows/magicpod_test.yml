@@ -5,7 +5,7 @@ jobs:
   # job名(任意の名前)
   magic_pod_job:
     # virtual machineの形式を指定 
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     name: Run batch test
     # jobのステップ
     steps:
@@ -21,6 +21,10 @@ jobs:
         run: bundle update
       - name: setup brew # brewをインストール
         run: echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> $GITHUB_PATH
+      - name: Select Xcode version # Xcode 14.3 を使う
+        run: sudo xcode-select -s '/Applications/Xcode_14.3.app/Contents/Developer'
+      - name: Show Xcode version
+        run: xcodebuild -version
      # ステップ1(アプリを作成する)
         # ステップ名1
       - name: Create app
