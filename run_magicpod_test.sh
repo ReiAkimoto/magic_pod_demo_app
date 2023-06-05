@@ -18,7 +18,7 @@ unzip -q ${FILENAME}.zip
 
 
 
-# MagicPodで使う各種環境変数を設定。
+# MagicPodで使う各種環境変数を設定
 
 export MAGICPOD_ORGANIZATION=MagicPod10
 
