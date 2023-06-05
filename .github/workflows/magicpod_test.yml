@@ -1,12 +1,11 @@
-# Git Pushした時にこのワークフローを実行する
+# Pushした時にこのワークフローを実行する
 on: [push]
 
 jobs:
   # job名(任意の名前)
   magic_pod_job:
     # virtual machineの形式を指定 
-    runs-on: macos-latest
-    name: Run batch test
+    runs-on: macos-latest  #今回はmacを指定
     # jobのステップ
     steps:
       - name: Checkout
@@ -17,8 +16,6 @@ jobs:
           ruby-version: 3.1.2
       - name: bundle install # Gem系ライブラリインストール
         run: bundle install
-      - name: bundle update 
-        run: bundle update
       - name: setup brew # brewをインストール
         run: echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> $GITHUB_PATH
       - name: Select Xcode version # Xcode 13.2.1 を使う
