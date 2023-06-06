@@ -2,34 +2,39 @@
 on: [push]
 
 jobs:
-  # job名(任意の名前)
+  # job名(任意のjob名)
   magic_pod_job:
-    # virtual machineの形式を指定 
+
+    # virtual machineの形式を指定
     runs-on: macos-latest  #今回はmacを指定
-    # jobのステップ
+
+    # job内のステップ
     steps:
+      # ステップ1(チェックアウト)
       - name: Checkout
-        uses: actions/checkout@v3 # actionsのバージョン。最新をセットしてください
-      - name: set up ruby # Rubyをインストール
+        uses: actions/checkout@v3 # actionsのバージョンは最新を指定
+    # ステップ2(Rubyをインストール)
+      - name: Set up ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1.2
-      - name: bundle install # Gem系ライブラリインストール
-        run: bundle install
-      - name: setup brew # brewをインストール
+    # ステップ3(Fastlaneインストール)
+      - name: Install Fastlane
+        run: gem install fastlane
+    # ステップ4(brewをインストール)
+      - name: Setup brew
         run: echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> $GITHUB_PATH
-      - name: Select Xcode version # Xcode 13.2.1 を使う
+    # ステップ5(Xcode 13.2.1 を選択)
+      - name: Select Xcode version
         run: sudo xcode-select -s '/Applications/Xcode_13.2.1.app/Contents/Developer'
+    # ステップ6(Xcodeのバージョンを出力)
       - name: Show Xcode version
         run: xcodebuild -version
-     # ステップ1(アプリを作成する)
-        # ステップ名1
+    # ステップ7(アプリを作成する)
       - name: Create app
-        run: bundle exec fastlane magicpod_create_app #Fastfileで指定したレーン名
-     # ステップ2(作成したアプリをMagicPodにアップロードし一括実行する)
-        # ステップ名2
+        run: fastlane magicpod_create_app  #Fastfileで指定したlane名
+    # ステップ8(作成したアプリをMagicPodにアップロードし一括実行する)
       - name: Batch run test
         env:
-          MAGICPOD_API_TOKEN: ${{ secrets.MAGIC_POD_API_TOKEN }} #GitHubで設定した変数名
-        run: bash run_magicpod_test.sh
-
+          MAGICPOD_API_TOKEN: ${{ secrets.MAGIC_POD_API_TOKEN }}  #GitHubで設定した変数名
+        run: bash run_magicpod_test.sh  #先ほど作成したシェルスクリプト
